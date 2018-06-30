@@ -17,12 +17,38 @@ namespace SortUtilities.Tests
             CollectionAssert.AreEqual(expectedArray, testArray);
         }
 
+        [TestMethod]
+        public void QuickSort_LargeArray_ExtectedArray()
+        {
+            int minPossibleValue = 0;
+            int maxPossibleValue = 1000000;
+            Random randNum = new Random();
+
+            int[] largeTestArray = new int[Int32.MaxValue/10];
+            for (int i = 0; i < largeTestArray.Length; i++)
+            {
+                largeTestArray[i] = randNum.Next(minPossibleValue, maxPossibleValue);
+            }
+
+            int[] expectedArray = largeTestArray;
+            Array.Sort(expectedArray);
+
+            Sortings.QuickSort(largeTestArray);
+            CollectionAssert.AreEqual(expectedArray, largeTestArray);
+        }
+
         [TestMethod,ExpectedException(typeof(ArgumentNullException))]
         public void QuickSort_Null_ArgumentNullException()
         {
             Sortings.QuickSort(null);
         }
-        
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void QuickSort_EmptyArray_ArgumentNullException()
+        {
+            Sortings.QuickSort(new int[] { });
+        }
+
         [TestMethod]
         public void MergeSort_TestArraySort_ExpectedArray()
         {
@@ -33,19 +59,36 @@ namespace SortUtilities.Tests
             CollectionAssert.AreEqual(expectedArray, testArray);
         }
 
+        [TestMethod]
+        public void MergeSort_LargeArray_ExtectedArray()
+        {
+            int minPossibleValue = 0;
+            int maxPossibleValue = 1000000;
+            Random randNum = new Random();
+
+            int[] largeTestArray = new int[Int32.MaxValue / 10000];
+            for (int i = 0; i < largeTestArray.Length; i++)
+            {
+                largeTestArray[i] = randNum.Next(minPossibleValue, maxPossibleValue);
+            }
+
+            int[] expectedArray = largeTestArray;
+            Array.Sort(expectedArray);
+
+            Sortings.MergeSort(largeTestArray);
+            CollectionAssert.AreEqual(expectedArray, largeTestArray);
+        }
+
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void MergeSort_Null_ArgumentNullException()
         {
             Sortings.MergeSort(null);
         }
 
-        [TestMethod]
-        public void MergeSort_EmptyArray_EmptyArray()
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void MergeSort_EmptyArray_ArgumentNullException()
         {
-            int[] x = { };
-            int[] y = { };
-            Sortings.MergeSort(x);
-            CollectionAssert.AreEqual(x, y);
+            Sortings.MergeSort(new int[] { });
         }
     }
 }

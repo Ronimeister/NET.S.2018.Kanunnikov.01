@@ -17,7 +17,12 @@ namespace SortUtilities
         {
             if (array == null)
             {
-                throw new ArgumentNullException(nameof(array));
+                throw new ArgumentNullException(nameof(array) + @" can't be equal to null.");
+            }
+
+            if(array.Length == 0)
+            {
+                throw new ArgumentNullException(nameof(array) + @" can't be empty.");
             }
 
             QuickSort(array, 0, array.Length - 1);
@@ -31,7 +36,12 @@ namespace SortUtilities
         {
             if (array == null)
             {
-                throw new ArgumentNullException(nameof(array));
+                throw new ArgumentNullException(nameof(array) + @" can't be equal to null.");
+            }
+
+            if (array.Length == 0)
+            {
+                throw new ArgumentNullException(nameof(array) + @" can't be empty.");
             }
 
             MergeSort(array, 0, array.Length - 1);
