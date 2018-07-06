@@ -12,6 +12,7 @@ namespace SortUtilities
         /// Implement Quick Sort for the input array
         /// </summary>
         /// <param name="array">The array needed to be sorted</param>
+        /// <exception cref="ArgumentNullException">Throws when the array is equal to null or empty.</exception>
         /// 
         public static void QuickSort(int[] array)
         {
@@ -32,6 +33,7 @@ namespace SortUtilities
         /// Implement Merge Sort for the input array
         /// </summary>
         /// <param name="array">The array needed to be sorted</param>
+        /// <exception cref="ArgumentNullException">Throws when the array is equal to null or empty.</exception>
         public static void MergeSort(int[] array)
         {
             if (array == null)
